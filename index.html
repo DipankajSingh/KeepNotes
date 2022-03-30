@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="icon/all.min.css" />
+    <link rel="stylesheet" href="icon/fontawesome.min.css" />
+    <title>TakeNotes</title>
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="javascript.js"></script>
+</head>
+<body>
+  <nav>
+    <div class="nDiv"><p class="name">TakeNotes</p></div>
+    <div class="newNoteButton" id="newNoteButton"><i class="fa-solid fa-plus fa-2x plus-icon"></i></div>
+    <div class="option-button"><svg viewBox="0 0 512.000000 512.000000"
+    preserveAspectRatio="xMidYMid meet"  class="option-icon"><g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
+   fill="inherit" stroke="none">
+   <path d="M2160 5098 c-66 -46 -70 -56 -101 -314 -16 -131 -33 -241 -37 -245
+   -4 -4 -52 -21 -107 -39 -104 -34 -244 -93 -317 -135 -24 -14 -49 -25 -56 -25
+   -8 0 -84 55 -170 123 -208 164 -213 167 -256 177 -77 17 -93 6 -354 -254 -134
+   -132 -253 -256 -264 -275 -25 -40 -27 -105 -5 -147 9 -16 77 -106 151 -201 75
+   -94 136 -178 136 -185 0 -7 -11 -32 -25 -56 -42 -73 -101 -213 -135 -317 -18
+   -55 -36 -103 -39 -108 -4 -4 -114 -20 -245 -36 -258 -31 -268 -35 -313 -101
+   -23 -33 -23 -36 -23 -400 0 -491 -22 -458 331 -501 129 -16 238 -30 244 -33 6
+   -2 19 -30 29 -62 33 -109 69 -198 122 -307 30 -59 54 -112 54 -118 0 -6 -61
+   -88 -136 -182 -74 -95 -142 -185 -151 -201 -24 -46 -20 -109 10 -153 15 -21
+   134 -145 264 -275 197 -196 245 -238 278 -247 71 -19 100 -4 299 153 102 80
+   191 146 198 146 7 0 33 -12 58 -26 71 -41 207 -99 316 -134 54 -18 102 -35
+   106 -39 4 -4 21 -114 37 -245 31 -258 35 -268 101 -313 33 -23 36 -23 400 -23
+   492 0 457 -23 501 336 16 131 33 241 37 245 4 4 52 21 107 39 104 34 244 93
+   317 135 24 14 49 25 56 25 8 0 84 -55 170 -123 238 -187 224 -178 280 -179 34
+   -1 60 5 83 20 19 11 143 130 275 264 255 256 267 273 256 348 -6 42 -12 51
+   -174 256 -71 89 -128 167 -128 173 0 6 22 55 49 109 52 103 90 196 123 302 11
+   36 23 68 27 72 3 4 114 21 245 37 258 31 268 35 313 101 23 33 23 36 23 400 0
+   492 23 457 -336 501 -131 16 -241 33 -245 37 -4 4 -21 52 -39 107 -34 104 -93
+   244 -135 317 -14 24 -25 49 -25 56 0 8 62 93 138 190 77 98 145 188 151 201
+   20 37 17 104 -7 142 -11 19 -130 143 -264 276 -202 200 -250 243 -283 252 -71
+   19 -100 4 -299 -153 -102 -80 -190 -146 -196 -146 -5 0 -55 23 -110 51 -107
+   53 -193 88 -300 121 -36 11 -68 23 -72 27 -4 3 -21 114 -37 245 -31 258 -35
+   268 -101 314 -33 22 -36 22 -400 22 -364 0 -367 0 -400 -22z m645 -1283 c538
+   -111 938 -532 1020 -1075 105 -691 -388 -1345 -1090 -1445 -383 -55 -772 70
+   -1054 340 -521 497 -533 1312 -28 1823 199 203 459 332 743 371 95 14 313 6
+   409 -14z"/></g></svg></div>
+  </nav>
+  <div class="allNotesContainer" id="allNotesContainer"></div>
+  <div class="noteView" id="noteView"><div class="viewParagraph" id="viewParagraph"></div><button class="closeButton" id="closeButton"><i class="fa-solid fa-close fa-2x closeI"></i></button></div>
+  
+  <div class="option-dailog">
+    <div class="setting-title">setting</div>
+    <div class="theme-section">
+      <div class="defult-theme">
+        <input type="checkbox" class="defult-theme-checkbox">
+        <span class="dark-theme-text">use defult theme</span>
+        <div class="dark-theme-on-off">on or off</div>
+      </div>
+      <div class="custom-theme">
+        <div class="application-background">
+          <div class="application-background-text">Application Background colour</div>
+          <input type="color" class="app-background-color-input">
+        </div>
+        <div class="application-text-color">
+          <div class="application-text-color-text">Application text colour</div>
+          <input type="color" class="application-text-color-input">
+        </div>
+        <div class="notes-text-color">
+          <div class="notes-text-color-text">notes text colour</div>
+          <input type="color" class="notes-text-color-input">
+        </div>
+        <div class="notes-background-color">
+          <div class="notes-background-color-text">notes background colour</div>
+          <input type="color" class="notes-background-color-input">
+        </div>
+        <div class="icon-color">
+          <div class="icon-color-text">icon colour</div>
+          <input type="color" class="icon-color-input">
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

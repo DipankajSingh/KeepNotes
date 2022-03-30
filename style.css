@@ -1,0 +1,335 @@
+:root {
+  --background-color: hsl(111, 33%, 8%);
+  --ui-text-color: hsl(120, 100%, 50%);
+  --notes-color: hsl(0, 0%, 100%);
+  --notes-background-color: hsla(120, 100%, 50%, 0.801);
+  --icon-color: hsl(0, 0%, 100%);
+  --notes-hover-color: hsl(96, 100%, 50%);
+  --scrollbar-color: hsl(120, 90%, 15%);
+  --dailog-color: hsla(120, 100%, 50%, 0.438);
+  --icon-hover-color: hsl(120, 100%, 50%);
+  --shadow:0 0 .5rem .1rem var(--notes-background-color);
+  --blur:blur(5px);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-color) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-color);
+  border-radius: 20px;
+}
+*::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+body {
+  display: flex;
+  position: relative;
+  background-color: var(--background-color);
+  height: 100vh;
+  width: 100vw;
+  min-width: 270px;
+}
+nav {
+  display: inline-block;
+  position: absolute;
+  width: 100vw;
+  height: max-content;
+}
+.nDiv {
+  position: relative;
+  background-color: inherit;
+}
+
+.name {
+  position: relative;
+  color: var(--ui-text-color);
+  font-family: monospace;
+  font-size: 2em;
+  font-weight: 800;
+  left: 1rem;
+  top: 1.3rem;
+  width: max-content;
+}
+
+.name::after,
+.name::before {
+  content: "";
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+}
+
+.name::before {
+  background-color: #0f1a0d;
+  animation: animateName 3s steps(9) 1s forwards;
+}
+
+.name::after {
+  width: 0.1em;
+  background-color: lime;
+  animation: animateName 3s steps(9) 1s forwards,
+    blink 0.8s infinite steps(9) forwards;
+}
+
+@keyframes animateName {
+  to {
+    left: 100%;
+  }
+}
+
+@keyframes blink {
+  to {
+    background-color: transparent;
+  }
+}
+
+.newNoteButton,
+.option-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: .5rem;
+  float: right;
+  height: 2rem;
+  width: 2rem;
+  top: -1rem;
+  border-radius: 50%;
+  color: var(--icon-color);
+  fill: var(--icon-color);
+  transition: background-color 100ms ease-in-out, box-shadow 200ms ease-in-out;
+}
+
+.newNoteButton:active,
+.option-button:active {
+  box-shadow: 0 0 .5rem .1rem hsla(120, 79%, 21%, 0.7);
+  background-color: hsla(120, 79%, 21%, 0.7);
+}
+
+.option-icon {
+  transition: fill 0.2s, transform 0.2s ease-in-out;
+  width: 1.55rem;
+  height: 1.55rem;
+}
+.plus-icon {
+  transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.newNoteButton:active .plus-icon {
+  transform: rotate(180deg);
+  color: var(--icon-hover-color);
+}
+
+.option-button:active .option-icon {
+  fill: var(--icon-hover-color);
+  transform: rotate(90deg);
+}
+
+.allNotesContainer {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  height: 80%;
+  flex-wrap: wrap;
+  bottom: 0;
+  overflow: auto;
+}
+
+.note {
+  position: relative;
+  display: inline-block;
+  height: 12rem;
+  width: 11.5rem;
+  border-radius: 0.3rem;
+  background-color: var(--notes-background-color);
+  color: var(--notes-color);
+  margin: 1rem auto;
+  font-size: larger;
+  cursor: pointer;
+  transition: all 0.2s;
+  overflow: hidden;
+}
+
+.note:hover {
+  box-shadow: var(--shadow);
+  background-color: var(--notes-hover-color);
+  transition: all 0.3s;
+}
+.noteTitle {
+  position: absolute;
+  word-wrap: break-word;
+  width: 100%;
+  height: 80%;
+  padding: 10px;
+  font-size: 1.5rem;
+  color: inherit;
+  overflow: auto;
+}
+
+.edit {
+  display: inline-block;
+  position: absolute;
+  bottom: 0.7rem;
+  right: 0.7rem;
+  background-color: transparent;
+  border: none;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+.delete {
+  display: inline-block;
+  position: absolute;
+  bottom: 0.7rem;
+  left: 0.7rem;
+  background-color: transparent;
+  border: none;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+.deleteI,
+.editI {
+  color: var(--icon-color);
+}
+.delete:hover {
+  transition: all 0.3s;
+}
+.delete:hover .deleteI {
+  color: red;
+  transition: all 0.3s;
+}
+
+.delete:hover .note {
+  background-color: red;
+  transition: all 0.3s;
+}
+
+.edit:hover {
+  transition: all 0.3s;
+}
+
+.edit:hover .editI {
+  color: green;
+  transition: all 0.3s;
+}
+
+.noteView {
+  position: absolute;
+  display: none;
+  width:75vw;
+  height: 60vh;
+  background-color: var(--dailog-color);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.95;
+  border-radius: 0.3rem;
+  z-index: 10;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  backdrop-filter: var(--blur);
+  -webkit-backdrop-filter: var(--blur);
+}
+.viewParagraph {
+  display: block;
+  position: absolute;
+  margin: 10px;
+  color: var(--notes-color);
+  font-size: 2rem;
+  word-wrap: break-word;
+  height: 95%;
+  width: 95%;
+  overflow: scroll;
+}
+.closeButton {
+  position: sticky;
+  display: inline;
+  right: 0.9rem;
+  top: 0.6rem;
+  float: right;
+  color: var(--icon-color);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 20;
+}
+.closeButton:hover .closeI {
+  transition: all 0.2s;
+  background: transparent;
+  color: red;
+}
+.closeI {
+  color: wheat;
+}
+.editWindow {
+  display: none;
+  position: relative;
+  width: 60vw;
+  height: 50vh;
+  place-self:center center ;
+  margin: 0 auto;
+  background-color: var(--dailog-color);
+  border-radius: 0.3rem;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  backdrop-filter: var(--blur);
+  -webkit-backdrop-filter: var(--blur);
+
+}
+.editTitle {
+  display: inline-block;
+  position: absolute;
+  background-color: inherit;
+  resize: none;
+  border: none;
+  padding: 10px;
+  top: 0;
+  height: 80%;
+  width: 100%;
+  font-size: 1.5rem;
+  font-weight: bold;
+  outline: none;
+  color: var(--notes-color);
+}
+
+.done {
+  position: absolute;
+  display: inline-block;
+  height: max-content;
+  width: max-content;
+  left: 50%;
+  bottom: -.5rem;
+  transform: translate(-50%, -50%);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 9;
+
+}
+.doneI {
+  border-radius: 50%;
+  color: var(--icon-color);
+}
+.done:hover .doneI {
+  transition: all 0.2s;
+  color: var(--icon-hover-color);
+  box-shadow: var(--shadow);
+}
+
+.option-dailog{
+  display: flex;
+  position: absolute;
+  z-index: 100;
+}
