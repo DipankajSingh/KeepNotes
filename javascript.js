@@ -8,11 +8,8 @@ if (noteObj != null) {
   noteObj.forEach((element) => {
     addNewNote(null, element);
   });
-}
-if(noteObj!=null){noteObj.forEach((element) => {
-  addNewNote(null, element);
-});}
-
+};
+// check if there is an empty note
 Array.from(arrOfElm("noteTitle")).forEach((elm) => {
   if (elm.innerText == "") {
     elm.parentElement.remove();
@@ -92,12 +89,13 @@ function addNewNote(e, text = "") {
       if (textarea.value != div.innerText) {
         div.innerText = textarea.value;
         textarea.value = "";
+        localStorage.removeItem('notes');
         let array = [];
         Array.from(arrOfElm("noteTitle")).forEach((element) => {
           array.push(element.innerText);
         });
         localStorage.setItem("notes", JSON.stringify(array));
-      }
+      };
       editWindow.style.display = "none";
     });
   });
@@ -110,3 +108,11 @@ elementId("closeButton").addEventListener("click", (e) => {
   elementId("viewParagraph").innerText = "";
   e.stopPropagation();
 });
+
+document.querySelector('.cancel').addEventListener('click',()=>{
+  document.querySelector('.option-dailog').style.display='none';
+})
+
+document.querySelector('.option-button').addEventListener('click',()=>{
+  document.querySelector('.option-dailog').style.display='flex';
+})

@@ -1,15 +1,18 @@
 :root {
   --background-color: hsl(111, 33%, 8%);
   --ui-text-color: hsl(120, 100%, 50%);
-  --notes-color: hsl(0, 0%, 100%);
+  --notes-color: hsl(0, 3%, 23%);
   --notes-background-color: hsla(120, 100%, 50%, 0.801);
   --icon-color: hsl(0, 0%, 100%);
   --notes-hover-color: hsl(96, 100%, 50%);
   --scrollbar-color: hsl(120, 90%, 15%);
-  --dailog-color: hsla(120, 100%, 50%, 0.438);
-  --icon-hover-color: hsl(120, 100%, 50%);
+  --dailog-color: hsla(120, 100%, 50%, 0.87);
+  --icon-hover-color: hsl(110, 98%, 48%);
+  --icon-done-hover-color: hsl(110, 64%, 24%); 
   --shadow:0 0 .5rem .1rem var(--notes-background-color);
   --blur:blur(5px);
+  --border-color:rgb(21, 59, 4);
+  --border:2px solid var(--border-color);
 }
 
 * {
@@ -50,7 +53,7 @@ nav {
   background-color: inherit;
 }
 
-.name {
+.name, .setting-title {
   position: relative;
   color: var(--ui-text-color);
   font-family: monospace;
@@ -59,10 +62,11 @@ nav {
   left: 1rem;
   top: 1.3rem;
   width: max-content;
+  height: max-content;
 }
 
-.name::after,
-.name::before {
+.name::after , .setting-title::after,
+.name::before, .setting-title::before {
   content: "";
   top: 0;
   bottom: 0;
@@ -71,16 +75,28 @@ nav {
   position: absolute;
 }
 
-.name::before {
+.name::before{
   background-color: #0f1a0d;
   animation: animateName 3s steps(9) 1s forwards;
 }
 
-.name::after {
+.setting-title::before{
+  background-color: #0f1a0d;
+  animation: animateName 3s steps(8) 1s forwards;
+}
+
+.name::after{
   width: 0.1em;
   background-color: lime;
   animation: animateName 3s steps(9) 1s forwards,
     blink 0.8s infinite steps(9) forwards;
+}
+
+.setting-title::after {
+  width: 0.1em;
+  background-color: lime;
+  animation: animateName 3s steps(8) 1s forwards,
+    blink 0.8s infinite steps(8) forwards;
 }
 
 @keyframes animateName {
@@ -95,6 +111,9 @@ nav {
   }
 }
 
+.editWindow, .noteView{
+  border: var(--border);
+}
 .newNoteButton,
 .option-button {
   position: relative;
@@ -226,21 +245,17 @@ nav {
 }
 
 .noteView {
-  position: absolute;
+  position: relative;
   display: none;
   width:75vw;
   height: 60vh;
-  background-color: var(--dailog-color);
+  background-color: lime;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  opacity: 0.95;
   border-radius: 0.3rem;
-  z-index: 10;
   overflow: hidden;
   box-shadow: var(--shadow);
-  backdrop-filter: var(--blur);
-  -webkit-backdrop-filter: var(--blur);
 }
 .viewParagraph {
   display: block;
@@ -253,6 +268,7 @@ nav {
   width: 95%;
   overflow: scroll;
 }
+
 .closeButton {
   position: sticky;
   display: inline;
@@ -265,14 +281,17 @@ nav {
   cursor: pointer;
   z-index: 20;
 }
+
 .closeButton:hover .closeI {
   transition: all 0.2s;
   background: transparent;
   color: red;
 }
+
 .closeI {
   color: wheat;
 }
+
 .editWindow {
   display: none;
   position: relative;
@@ -284,10 +303,8 @@ nav {
   border-radius: 0.3rem;
   overflow: hidden;
   box-shadow: var(--shadow);
-  backdrop-filter: var(--blur);
-  -webkit-backdrop-filter: var(--blur);
-
 }
+
 .editTitle {
   display: inline-block;
   position: absolute;
@@ -324,12 +341,48 @@ nav {
 }
 .done:hover .doneI {
   transition: all 0.2s;
-  color: var(--icon-hover-color);
-  box-shadow: var(--shadow);
+  color: var(--icon-done-hover-color);
 }
 
 .option-dailog{
+  position: relative;
+  display: none;
+  width:100%;
+  height: 100%;
+  background-color: var(--background-color);
+  color: white;
+  transition: display 1s;
+}
+
+.save, .cancel{
   display: flex;
   position: absolute;
-  z-index: 100;
+  color: floralwhite;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  right: 10px;
+  top: 1.3rem;
+  height: 2.2rem;
+  width: 4.2rem;
+  border: var(--ui-text-color) solid 1px;
+  text-transform: capitalize;
+  font-weight: 800;
+  cursor: pointer;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  transition: font-size 200ms ease-in-out;
+  transform-origin: center;
+}
+
+.save{
+  right: 6rem;
+}
+
+.save:hover, .cancel:hover{
+  font-size: large;
+}
+
+.save:active, .cancel:active{
+  background-color: var(--ui-text-color);
+  color: var(--background-color);
 }
