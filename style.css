@@ -181,6 +181,9 @@ nav {
   overflow: hidden;
 }
 
+.noteTitle::first-letter{
+  text-transform: capitalize;
+}
 .note:hover {
   box-shadow: var(--shadow);
   background-color: var(--notes-hover-color);
@@ -361,28 +364,72 @@ nav {
   align-items: center;
   justify-content: center;
   background-color: transparent;
-  right: 10px;
-  top: 1.3rem;
+  right: 20px;
+  top: .8rem;
   height: 2.2rem;
   width: 4.2rem;
   border: var(--ui-text-color) solid 1px;
   text-transform: capitalize;
   font-weight: 800;
   cursor: pointer;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  transition: font-size 200ms ease-in-out;
+  font-family:'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  transition: all 200ms ease-in-out;
   transform-origin: center;
 }
 
 .save{
-  right: 6rem;
+  right: 7rem;
 }
 
 .save:hover, .cancel:hover{
   font-size: large;
+  color: var(--ui-text-color);
 }
 
 .save:active, .cancel:active{
   background-color: var(--ui-text-color);
   color: var(--background-color);
+}
+
+.line{
+  display: inline-block;
+  position: absolute;
+  height: .1rem;
+  width: 99vw;
+  top: 3.5rem;
+  background-color: var(--ui-text-color);
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.defult-theme{
+  display: flex;
+  position: absolute;
+  width: max-content;
+  top: 5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  left: 50%;
+  transform: translate(-50%);
+  font-family: monospace;
+}
+
+.defult-theme-checkbox{
+  width: 1.5rem;
+  height: 1.5rem;
+  position: relative;
+  display: inline-block;
+  left: -10vw;
+  background-color: red;
+}
+
+.use-defult-theme{
+  color: red;
+  left: -8vw;
+  display: inline-block;
+  position: relative;
+  
+}
+.custom-theme{
+  display: none;
 }
