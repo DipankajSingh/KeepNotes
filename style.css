@@ -409,8 +409,8 @@ nav {
   top: 5rem;
   left: 50%;
   transform: translate(-50%);
-  height: max-content;
-  width: max-content;
+  
+  width: 100%;
 }
 
 .dark-theme-checkbox{
@@ -431,6 +431,7 @@ nav {
   text-transform: capitalize;
   color: var(--ui-text-color);
   cursor: pointer;
+  left: 1rem;
 
 }
 
