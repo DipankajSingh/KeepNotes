@@ -50,11 +50,12 @@ function addNewNote(e, text = "") {
     e.stopPropagation();
     let arr = localStorage.getItem("notes");
     arr = JSON.parse(arr);
-    arr.find((value, index) => {
+    if (arr!=null){arr.find((value, index) => {
       if (value == div.innerText) {
         arr.splice(index, 1);
       }
     });
+       }
     localStorage.setItem("notes", JSON.stringify(arr));
 
     note.remove();
