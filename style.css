@@ -1,7 +1,7 @@
 :root {
   --background-color: hsl(111, 33%, 8%);
   --ui-text-color: hsl(120, 100%, 50%);
-  --notes-color: hsl(0, 3%, 23%);
+  --notes-color: hsl(100, 3%, 23%);
   --notes-background-color: hsla(120, 100%, 50%, 0.801);
   --icon-color: hsl(0, 0%, 100%);
   --notes-hover-color: hsl(96, 100%, 50%);
@@ -173,7 +173,7 @@ nav {
   height: 12rem;
   width: 11.5rem;
   border-radius: 0.3rem;
-  background-color: var(--notes-background-color);
+  background-color:var(--notes-background-color) ;
   color: var(--notes-color);
   margin: 1rem auto;
   font-size: larger;
@@ -392,11 +392,11 @@ nav {
   color: var(--background-color);
 }
 
-.line{
+.line, .line1{
   display: inline-block;
   position: absolute;
   height: .1rem;
-  width: 99vw;
+  width: 99%;
   top: 3.5rem;
   background-color: var(--ui-text-color);
   left: 50%;
@@ -407,6 +407,10 @@ nav {
   display: flex;
   position: absolute;
   top: 5rem;
+  left: 50%;
+  transform: translate(-50%);
+  height: max-content;
+  width: max-content;
 }
 
 .dark-theme-checkbox{
@@ -426,6 +430,7 @@ nav {
   font-weight: bolder;
   text-transform: capitalize;
   color: var(--ui-text-color);
+  cursor: pointer;
 
 }
 
@@ -437,18 +442,18 @@ nav {
   position: absolute;
   height: 1em;
   width: 2.2em;
-  left: -40%;
+  left: 170%;
   border-radius: .4em;
   background-color: rgb(236, 215, 215);
   z-index: 1;
-  transition:background-color 300ms ease-in-out, left 300ms ease-in-out;
+  transition:background-color 200ms ease-in-out, left 300ms ease-in-out;
 }
 .dark-theme-label::before{
 background-color: rgb(230, 26, 26);
 width: 1em;
 height: .9em;
 z-index: 2;
-left: -39%;
+left: 171%;
 }
 
 .dark-theme-checkbox:checked + .dark-theme-label::after{
@@ -457,8 +462,13 @@ left: -39%;
 
 .dark-theme-checkbox:checked + .dark-theme-label::before{
   background-color: var(--scrollbar-color);
-  
-  left: -21%;
+  left: 189%;
+}
+.line1{
+  top: 7.5rem;
+  height: 1px;
+  width: 5rem;
+  background-color: var(--border-color);
 }
 .custom-theme{
   display: none;
