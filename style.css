@@ -414,17 +414,12 @@ nav {
 }
 
 .dark-theme-checkbox{
-  width: max-content;
-  height: max-content;
-  position: relative;
   display: none;
 }
 
 .dark-theme-label{
   display: flex;
   position: relative;
-  justify-content: center;
-  align-items: center;
   font-size: 1.5em;
   font-family: monospace;
   font-weight: bolder;
@@ -432,6 +427,7 @@ nav {
   color: var(--ui-text-color);
   cursor: pointer;
   left: 1rem;
+  width: max-content;
 
 }
 
@@ -443,7 +439,7 @@ nav {
   position: absolute;
   height: 1em;
   width: 2.2em;
-  left: 170%;
+  left: 90vw;
   border-radius: .4em;
   background-color: rgb(236, 215, 215);
   z-index: 1;
