@@ -111,9 +111,9 @@ elementId("closeButton").addEventListener("click", (e) => {
 });
 
 document.querySelector('.cancel').addEventListener('click',()=>{
-  document.querySelector('.option-dailog').style.display='none';
+  document.querySelector('.option-dailog').style.transform='translateY(200%)';
 })
 
 document.querySelector('.option-button').addEventListener('click',()=>{
-  document.querySelector('.option-dailog').style.display='flex';
+  document.querySelector('.option-dailog').style.transform='translateY(0)';
 })
