@@ -97,7 +97,10 @@ function addNewNote(e, text = "") {
         });
         localStorage.setItem("notes", JSON.stringify(array));
       };
-      editWindow.style.display = "none";
+      editWindow.style.transform='translate(-50%, 110%)'
+      setTimeout(() => {
+        editWindow.remove()
+      }, 250);
     });
   });
 }
