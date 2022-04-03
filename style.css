@@ -38,7 +38,7 @@ body {
   display: flex;
   position: relative;
   background-color: var(--background-color);
-  height: 100vh;
+  height: 95vh;
   width: 100vw;
   min-width: 270px;
   overflow: hidden;
@@ -250,17 +250,18 @@ nav {
 }
 
 .noteView {
-  position: relative;
-  display: none;
-  width:75vw;
-  height: 60vh;
-  background-color: lime;
+  position: absolute;
+  display: inline-block;
+  width: 80vw;
+  height: 40vh;
+  background-color: limegreen;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, 150%);
   border-radius: 0.3rem;
   overflow: hidden;
   box-shadow: var(--shadow);
+  transition: transform 350ms ease-in;
 }
 .viewParagraph {
   display: block;
@@ -370,7 +371,7 @@ nav {
   justify-content: center;
   background-color: transparent;
   right: 3rem;
-  bottom: 6rem;
+  bottom: .1rem;
   height: 2.2rem;
   width: 4.2rem;
   border: var(--ui-text-color) solid 1px;
@@ -429,13 +430,13 @@ nav {
 .dark-theme-label p{
   display: inline-block;
   position: absolute;
-  font-size: 1.5em;
+  font-size: 1.2em;
   font-family: monospace;
-  font-weight: bolder;
+  font-weight: bold;
   text-transform: capitalize;
   color: var(--ui-text-color);
   cursor: pointer;
-  left: 1rem;
+  left: 2rem;
   width: max-content;
   transition: all 250ms ease-in-out;
 
@@ -493,5 +494,41 @@ nav {
   background-color: var(--border-color);
 }
 .custom-theme{
-  display: none;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  width: 100%;
+  height: max-content;
+  top: 6rem;
+}
+.color-title{
+  width: 100%;
+  height: max-content;
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.text{
+  position: relative;
+  display: inline-block;
+  color: var(--ui-text-color);
+  left: 2rem;
+  width: 50%;
+  font-size: 1.2em;
+  font-family: monospace;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.color-input{
+  display: inline-block;
+  position: absolute;
+  width: 2rem;
+  height: 1rem;
+  border: none;
+  border-radius: 1rem;
+  outline: none;
+  right: 2rem;
 }

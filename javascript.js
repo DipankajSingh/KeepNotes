@@ -39,7 +39,7 @@ function addNewNote(e, text = "") {
   note.appendChild(deleteBtn);
 
   note.addEventListener("click", (e) => {
-    elementId("noteView").style.display = "inline-block";
+    elementId("noteView").style.transform='translate(-50%, -50%)';
     elementId("viewParagraph").innerText = div.innerText;
     e.stopPropagation();
   });
@@ -108,7 +108,7 @@ function addNewNote(e, text = "") {
 document.getElementById("newNoteButton").addEventListener("click", addNewNote);
 
 elementId("closeButton").addEventListener("click", (e) => {
-  elementId("noteView").style.display = "none";
+  elementId("noteView").style.transform='translate(-50%, 150%)';
   elementId("viewParagraph").innerText = "";
   e.stopPropagation();
 });
