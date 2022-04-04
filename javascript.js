@@ -108,6 +108,7 @@ function addNewNote(e, text = "") {
 // adding a new note on clicking plus button
 document.getElementById("newNoteButton").addEventListener("click", addNewNote);
 
+// styles
 elementId("closeButton").addEventListener("click", (e) => {
   elementId("noteView").style.transform = "translate(-50%, 150%)";
   elementId("viewParagraph").innerText = "";
@@ -121,3 +122,54 @@ document.querySelector(".cancel").addEventListener("click", () => {
 document.querySelector(".option-button").addEventListener("click", () => {
   document.querySelector(".option-dailog").style.transform = "translateY(0)";
 });
+// accessing the all variable values
+let root = document.querySelector(":root");
+const getValue = (requredVariable) =>
+  getComputedStyle(root).getPropertyValue("--" + requredVariable);
+const setValue = (target, value) =>
+  root.style.setProperty("--" + target, value);
+// console.log(getValue("background-color"));
+
+// setValue('background-color','purple');
+
+const lightTheme = {
+  "--background-color":'hsl(111, 33%, 8%)',
+  "--ui-text-color":'hsl(120, 100%, 50%)',
+  "--notes-color":'hsl(100, 3%, 23%)',
+  "--notes-background-color":'hsla(120, 100%, 50%, 0.801)',
+  "--icon-color":'hsl(0, 0%, 100%)',
+  "--notes-hover-color":'hsl(96, 100%, 50%)',
+  "--scrollbar-color":'hsl(120, 90%, 15%)',
+  "--dailog-color":'hsla(120, 100%, 50%, 0.87)',
+  "--icon-hover-color":'hsl(110, 98%, 48%)',
+  "--icon-done-hover-color":'hsl(110, 64%, 24%)',
+  "--shadow":'0 0 0.5rem 0.1rem var(--notes-background-color)',
+  "--blur":'blur(5px)',
+  "--border-color":'rgb(21, 59, 4)',
+  "--border":'2px solid var(--border-color)',
+};
+
+document.querySelector('.dark-theme-label').addEventListener('click',()=>{
+  let checkbox=document.querySelector('.dark-theme-checkbox');
+  // there is false working like true
+  if (checkbox.checked==false) {
+    console.log('initial check!');
+    setValue('background-color','hsl(282, 50%, 3.9%)');
+    setValue('ui-text-color','hsl(284, 76.8%, 64.5%)');
+    setValue('notes-background-color','hsl(275.6, 85%, 26.1%)');
+    setValue('notes-color','hsl(284, 76.8%, 64.5%)');
+    setValue('icon-color','hsl(284, 76.8%, 64.5%)')
+    setValue('notes-hover-color','hsl(284.1, 100%, 25.9%)')
+    // setValue('scrollbar-color')
+    // setValue('dailog-color')
+    // setValue('icon-hover-color')
+    // setValue('icon-done-hover-color')
+    // setValue('shadow')
+    // setValue('blur')
+    // setValue('border-color')
+    // setValue('border')
+
+
+
+
+}})

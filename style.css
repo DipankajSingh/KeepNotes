@@ -429,7 +429,7 @@ nav {
 }
 
 .dark-theme-checkbox {
-  display: none;
+  display: inline-block;
 }
 .dark-theme-label {
   position: relative;
