@@ -8,7 +8,7 @@ if (noteObj != null) {
   noteObj.forEach((element) => {
     addNewNote(null, element);
   });
-};
+}
 // check if there is an empty note
 Array.from(arrOfElm("noteTitle")).forEach((elm) => {
   if (elm.innerText == "") {
@@ -39,7 +39,7 @@ function addNewNote(e, text = "") {
   note.appendChild(deleteBtn);
 
   note.addEventListener("click", (e) => {
-    elementId("noteView").style.transform='translate(-50%, -50%)';
+    elementId("noteView").style.transform = "translate(-50%, -50%)";
     elementId("viewParagraph").innerText = div.innerText;
     e.stopPropagation();
   });
@@ -50,12 +50,13 @@ function addNewNote(e, text = "") {
     e.stopPropagation();
     let arr = localStorage.getItem("notes");
     arr = JSON.parse(arr);
-    if (arr!=null){arr.find((value, index) => {
-      if (value == div.innerText) {
-        arr.splice(index, 1);
-      }
-    });
-       }
+    if (arr != null) {
+      arr.find((value, index) => {
+        if (value == div.innerText) {
+          arr.splice(index, 1);
+        }
+      });
+    }
     localStorage.setItem("notes", JSON.stringify(arr));
 
     note.remove();
@@ -90,16 +91,16 @@ function addNewNote(e, text = "") {
       if (textarea.value != div.innerText) {
         div.innerText = textarea.value;
         textarea.value = "";
-        localStorage.removeItem('notes');
+        localStorage.removeItem("notes");
         let array = [];
         Array.from(arrOfElm("noteTitle")).forEach((element) => {
           array.push(element.innerText);
         });
         localStorage.setItem("notes", JSON.stringify(array));
-      };
-      editWindow.style.transform='translate(-50%, 110%)'
+      }
+      editWindow.style.transform = "translate(-50%, 110%)";
       setTimeout(() => {
-        editWindow.remove()
+        editWindow.remove();
       }, 250);
     });
   });
@@ -108,15 +109,15 @@ function addNewNote(e, text = "") {
 document.getElementById("newNoteButton").addEventListener("click", addNewNote);
 
 elementId("closeButton").addEventListener("click", (e) => {
-  elementId("noteView").style.transform='translate(-50%, 150%)';
+  elementId("noteView").style.transform = "translate(-50%, 150%)";
   elementId("viewParagraph").innerText = "";
   e.stopPropagation();
 });
 
-document.querySelector('.cancel').addEventListener('click',()=>{
-  document.querySelector('.option-dailog').style.transform='translateY(200%)';
-})
+document.querySelector(".cancel").addEventListener("click", () => {
+  document.querySelector(".option-dailog").style.transform = "translateY(200%)";
+});
 
-document.querySelector('.option-button').addEventListener('click',()=>{
-  document.querySelector('.option-dailog').style.transform='translateY(0)';
-})
+document.querySelector(".option-button").addEventListener("click", () => {
+  document.querySelector(".option-dailog").style.transform = "translateY(0)";
+});

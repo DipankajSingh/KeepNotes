@@ -8,11 +8,11 @@
   --scrollbar-color: hsl(120, 90%, 15%);
   --dailog-color: hsla(120, 100%, 50%, 0.87);
   --icon-hover-color: hsl(110, 98%, 48%);
-  --icon-done-hover-color: hsl(110, 64%, 24%); 
-  --shadow:0 0 .5rem .1rem var(--notes-background-color);
-  --blur:blur(5px);
-  --border-color:rgb(21, 59, 4);
-  --border:2px solid var(--border-color);
+  --icon-done-hover-color: hsl(110, 64%, 24%);
+  --shadow: 0 0 0.5rem 0.1rem var(--notes-background-color);
+  --blur: blur(5px);
+  --border-color: rgb(21, 59, 4);
+  --border: 2px solid var(--border-color);
 }
 
 * {
@@ -54,7 +54,8 @@ nav {
   background-color: inherit;
 }
 
-.name, .setting-title {
+.name,
+.setting-title {
   position: relative;
   color: var(--ui-text-color);
   font-family: monospace;
@@ -66,8 +67,13 @@ nav {
   height: max-content;
 }
 
-.name::after , .setting-title::after,
-.name::before, .setting-title::before {
+.name{
+  top: 1rem;
+}
+.name::after,
+.setting-title::after,
+.name::before,
+.setting-title::before {
   content: "";
   top: 0;
   bottom: 0;
@@ -76,17 +82,17 @@ nav {
   position: absolute;
 }
 
-.name::before{
+.name::before {
   background-color: #0f1a0d;
   animation: animateName 3s steps(9) 1s forwards;
 }
 
-.setting-title::before{
+.setting-title::before {
   background-color: #0f1a0d;
   animation: animateName 3s steps(8) 1s forwards;
 }
 
-.name::after{
+.name::after {
   width: 0.1em;
   background-color: lime;
   animation: animateName 3s steps(9) 1s forwards,
@@ -112,7 +118,8 @@ nav {
   }
 }
 
-.editWindow, .noteView{
+.editWindow,
+.noteView {
   border: var(--border);
 }
 .newNoteButton,
@@ -121,7 +128,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: .5rem;
+  margin-right: 0.5rem;
   float: right;
   height: 2rem;
   width: 2rem;
@@ -135,7 +142,7 @@ nav {
 
 .newNoteButton:active,
 .option-button:active {
-  box-shadow: 0 0 .5rem .1rem hsla(120, 79%, 21%, 0.7);
+  box-shadow: 0 0 0.5rem 0.1rem hsla(120, 79%, 21%, 0.7);
   background-color: hsla(120, 79%, 21%, 0.7);
 }
 
@@ -174,7 +181,7 @@ nav {
   height: 12rem;
   width: 11.5rem;
   border-radius: 0.3rem;
-  background-color:var(--notes-background-color) ;
+  background-color: var(--notes-background-color);
   color: var(--notes-color);
   margin: 1rem auto;
   font-size: larger;
@@ -183,7 +190,7 @@ nav {
   overflow: hidden;
 }
 
-.noteTitle::first-letter{
+.noteTitle::first-letter {
   text-transform: capitalize;
 }
 .note:hover {
@@ -301,7 +308,7 @@ nav {
 .editWindow {
   display: inline-block;
   position: absolute;
-  width: 60vw;
+  width: 80vw;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -335,13 +342,12 @@ nav {
   height: max-content;
   width: max-content;
   left: 50%;
-  bottom: -.5rem;
+  bottom: -0.5rem;
   transform: translate(-50%, -50%);
   background-color: transparent;
   border: none;
   cursor: pointer;
   z-index: 9;
-
 }
 .doneI {
   border-radius: 50%;
@@ -352,10 +358,10 @@ nav {
   color: var(--icon-done-hover-color);
 }
 
-.option-dailog{
+.option-dailog {
   position: relative;
   display: inline-block;
-  width:100%;
+  width: 100%;
   height: 100%;
   transform: translateY(200%);
   background-color: var(--background-color);
@@ -363,44 +369,49 @@ nav {
   transition: transform 350ms;
 }
 
-.save, .cancel{
+.save,
+.cancel {
   display: flex;
-  position: absolute;
-  color: floralwhite;
   align-items: center;
   justify-content: center;
+  position: absolute;
   background-color: transparent;
-  right: 3rem;
-  bottom: .1rem;
-  height: 2.2rem;
-  width: 4.2rem;
+  right: .2rem;
+  top: 1.5rem;
+  height:5%;
+  width: 3.5rem;
   border: var(--ui-text-color) solid 1px;
   text-transform: capitalize;
   font-weight: 800;
   cursor: pointer;
-  font-family:'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: "Lucida Grande", "Lucida Sans", Arial, sans-serif;
   transition: all 200ms ease-in-out;
   transform-origin: center;
 }
 
-.save{
-  left: 3rem;
+.save {
+  right: calc(20% + 10px);
 }
 
-.save:hover, .cancel:hover{
-  font-size: large;
+.save p, .cancel p{
+  position: absolute;
   color: var(--ui-text-color);
+  font-size: 90%;
+  height: max-content;
+  width: max-content;
 }
 
-.save:active, .cancel:active{
-  background-color: var(--ui-text-color);
-  color: var(--background-color);
+.save:hover p,
+.cancel:hover p{
+  color: var(--icon-color);
+  transition: all 250ms;
 }
 
-.line, .line1{
+.line,
+.line1 {
   display: inline-block;
   position: absolute;
-  height: .1rem;
+  height: 1px;
   width: 99%;
   top: 3.5rem;
   background-color: var(--ui-text-color);
@@ -408,26 +419,25 @@ nav {
   transform: translate(-50%);
 }
 
-.defult-theme{
+.defult-theme {
   display: flex;
   position: absolute;
-  background-color: red;
   top: 4.5rem;
   width: 100%;
   left: 0;
   right: 0;
 }
 
-.dark-theme-checkbox{
+.dark-theme-checkbox {
   display: none;
 }
-.dark-theme-label{
+.dark-theme-label {
   position: relative;
   width: 100%;
   height: 100%;
 }
 
-.dark-theme-label p{
+.dark-theme-label p {
   display: inline-block;
   position: absolute;
   font-size: 1.2em;
@@ -439,61 +449,53 @@ nav {
   left: 2rem;
   width: max-content;
   transition: all 250ms ease-in-out;
-
 }
 
-.dark-theme-checkbox:checked + .dark-theme-label p{
+.dark-theme-checkbox:checked + .dark-theme-label p {
   color: rgb(134, 101, 224);
 }
 
-.dark-theme-toggle{
+.dark-theme-toggle {
   display: flex;
   align-items: center;
   position: absolute;
   right: 2rem;
   width: 2rem;
   height: 1rem;
-  border-radius: .3rem;
-  background-color: red;
+  border-radius: 0.3rem;
+  background-color: var(--ui-text-color);
   z-index: 1;
   transition: all 250ms ease-in-out;
   cursor: pointer;
-
 }
-.dark-theme-checkbox:checked + .dark-theme-label div{
+.dark-theme-checkbox:checked + .dark-theme-label div {
   background-color: blueviolet;
 }
 
-
-.dark-theme-toggle::before{
+.dark-theme-toggle::before {
   content: "";
   position: absolute;
-  height: .9rem;
-  width: .9rem;
-  border-radius: .3rem;
-  /* left: 1px; */
+  height: 0.9rem;
+  width: 0.9rem;
+  border-radius: 0.3rem;
   transform: translate(1px);
-  background-color: white;
+  background-color: #ffffff;
   transition: all 250ms ease-in-out;
   cursor: pointer;
-
-
 }
 
-.dark-theme-checkbox:checked + .dark-theme-label div::before{
-  background-color: red;
-  /* left: 51%; */
+.dark-theme-checkbox:checked + .dark-theme-label div::before {
+  background-color: #ffffff;
   transform: translate(109%);
 }
 
-
-.line1{
+.line1 {
   top: 6.5rem;
   height: 1px;
   width: 99%;
   background-color: var(--border-color);
 }
-.custom-theme{
+.custom-theme {
   display: flex;
   position: relative;
   flex-direction: column;
@@ -501,7 +503,7 @@ nav {
   height: max-content;
   top: 6rem;
 }
-.color-title{
+.color-title {
   width: 100%;
   height: max-content;
   display: flex;
@@ -510,7 +512,7 @@ nav {
   margin-bottom: 10px;
 }
 
-.text{
+.text {
   position: relative;
   display: inline-block;
   color: var(--ui-text-color);
@@ -522,7 +524,7 @@ nav {
   text-transform: capitalize;
 }
 
-.color-input{
+.color-input {
   display: inline-block;
   position: absolute;
   width: 2rem;
