@@ -2,15 +2,17 @@
   --background-color: hsl(111, 33%, 8%);
   --ui-text-color: hsl(120, 100%, 50%);
   --notes-color: hsl(100, 3%, 23%);
-  --notes-background-color: hsla(120, 100%, 50%, 0.801);
+  --alfa:.8;
+  --notes-background-color: hsla(120, 100%, 50%, var(--alfa));
+  --alfa1:calc(var(--alfa) - .1);
   --icon-color: hsl(0, 0%, 100%);
   --notes-hover-color: hsl(96, 100%, 50%);
   --scrollbar-color: hsl(120, 90%, 15%);
-  --dailog-color: hsla(120, 100%, 50%, 0.87);
+  --dailog-color: hsla(120, 78%, 49%, 0.986);
   --icon-hover-color: hsl(110, 98%, 48%);
   --icon-done-hover-color: hsl(110, 64%, 24%);
-  --shadow: 0 0 0.5rem 0.1rem var(--notes-background-color);
-  --blur: blur(5px);
+  --shadow: 0 0 0.5rem 0.1rem hsla(120, 79%, 21%, var(--alfa1));
+  --back-active-color:hsla(120, 79%, 21%, var(--alfa1));
   --border-color: rgb(21, 59, 4);
   --border: 2px solid var(--border-color);
 }
@@ -83,25 +85,25 @@ nav {
 }
 
 .name::before {
-  background-color: #0f1a0d;
+  background-color: var(--background-color);
   animation: animateName 3s steps(9) 1s forwards;
 }
 
 .setting-title::before {
-  background-color: #0f1a0d;
+  background-color: var(--background-color);
   animation: animateName 3s steps(8) 1s forwards;
 }
 
 .name::after {
   width: 0.1em;
-  background-color: lime;
+  background-color: var(--ui-text-color);
   animation: animateName 3s steps(9) 1s forwards,
     blink 0.8s infinite steps(9) forwards;
 }
 
 .setting-title::after {
   width: 0.1em;
-  background-color: lime;
+  background-color: var(--ui-text-color);
   animation: animateName 3s steps(8) 1s forwards,
     blink 0.8s infinite steps(8) forwards;
 }
@@ -142,8 +144,8 @@ nav {
 
 .newNoteButton:active,
 .option-button:active {
-  box-shadow: 0 0 0.5rem 0.1rem hsla(120, 79%, 21%, 0.7);
-  background-color: hsla(120, 79%, 21%, 0.7);
+  box-shadow: var(--shadow);
+  background-color: var(--back-active-color);
 }
 
 .option-icon {
@@ -261,7 +263,7 @@ nav {
   display: inline-block;
   width: 80vw;
   height: 40vh;
-  background-color: limegreen;
+  background-color: var(--dailog-color);
   left: 50%;
   top: 50%;
   transform: translate(-50%, 150%);
@@ -372,38 +374,28 @@ nav {
 .save,
 .cancel {
   display: flex;
-  align-items: center;
-  justify-content: center;
   position: absolute;
-  background-color: transparent;
-  right: .2rem;
-  top: 1.5rem;
-  height:5%;
-  width: 3.5rem;
-  border: var(--ui-text-color) solid 1px;
-  text-transform: capitalize;
-  font-weight: 800;
+  right: 2rem;
+  top: 1.2rem;
+  height: max-content;
+  width: max-content;
   cursor: pointer;
-  font-family: "Lucida Grande", "Lucida Sans", Arial, sans-serif;
-  transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in;
   transform-origin: center;
 }
 
 .save {
-  right: calc(20% + 10px);
+  right: 5.5rem;
 }
 
-.save p, .cancel p{
+.save i, .cancel i{
   position: absolute;
   color: var(--ui-text-color);
-  font-size: 90%;
-  height: max-content;
-  width: max-content;
 }
 
-.save:hover p,
-.cancel:hover p{
-  color: var(--icon-color);
+.save:hover i,
+.cancel:hover i{
+  color: var(--icon-hover-color);
   transition: all 250ms;
 }
 
@@ -429,7 +421,7 @@ nav {
 }
 
 .dark-theme-checkbox {
-  display: inline-block;
+  display: none;
 }
 .dark-theme-label {
   position: relative;
@@ -452,7 +444,7 @@ nav {
 }
 
 .dark-theme-checkbox:checked + .dark-theme-label p {
-  color: rgb(134, 101, 224);
+  color: var(--ui-text-color);
 }
 
 .dark-theme-toggle {
