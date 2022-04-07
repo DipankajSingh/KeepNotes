@@ -1,20 +1,43 @@
-:root {
-  --background-color: hsl(111, 33%, 8%);
-  --ui-text-color: hsl(120, 100%, 50%);
-  --notes-color: hsl(100, 3%, 23%);
-  --alfa:.8;
-  --notes-background-color: hsla(120, 100%, 50%, var(--alfa));
-  --alfa1:calc(var(--alfa) - .1);
-  --icon-color: hsl(0, 0%, 100%);
-  --notes-hover-color: hsl(96, 100%, 50%);
-  --scrollbar-color: hsl(120, 90%, 15%);
-  --dailog-color: hsla(120, 78%, 49%, 0.986);
-  --icon-hover-color: hsl(110, 98%, 48%);
-  --icon-done-hover-color: hsl(110, 64%, 24%);
-  --shadow: 0 0 0.5rem 0.1rem hsla(120, 79%, 21%, var(--alfa1));
-  --back-active-color:hsla(120, 79%, 21%, var(--alfa1));
-  --border-color: rgb(21, 59, 4);
-  --border: 2px solid var(--border-color);
+@media (prefers-color-scheme: light){
+  :root {
+    --background-color: hsl(111, 33%, 8%);
+    --ui-text-color: hsl(120, 100%, 50%);
+    --notes-color: hsl(100, 3%, 23%);
+    --alfa:.8;
+    --notes-background-color: hsla(120, 100%, 50%, var(--alfa));
+    --alfa1:calc(var(--alfa) - .1);
+    --icon-color: hsl(0, 0%, 100%);
+    --notes-hover-color: hsl(96, 100%, 50%);
+    --scrollbar-color: hsl(120, 90%, 15%);
+    --dailog-color: hsla(120, 78%, 49%, 0.986);
+    --icon-hover-color: hsl(110, 98%, 48%);
+    --icon-done-hover-color: hsl(110, 64%, 24%);
+    --shadow: 0 0 0.5rem 0.1rem hsla(120, 79%, 21%, var(--alfa1));
+    --back-active-color:hsla(120, 79%, 21%, var(--alfa1));
+    --border-color: rgb(21, 59, 4);
+    --border: 2px solid var(--border-color);
+  }
+}
+
+@media (prefers-color-scheme: dark){
+  :root {
+    --background-color: hsl(282, 50%, 3.9%);
+    --ui-text-color: hsl(284, 76.8%, 64.5%);
+    --notes-color: hsl(284, 76.8%, 64.5%);
+    --alfa:.8;
+    --notes-background-color: hsla(275.6, 85%, 26.1%, var(--alfa));
+    --alfa1:calc(var(--alfa) - .1);
+    --icon-color: hsl(284, 76.8%, 64.5%);
+    --notes-hover-color: rgb(59, 3, 80);
+    --scrollbar-color: var(--ui-text-color);
+    --dailog-color: hsl(275.6, 85%, 35.1%);
+    --icon-hover-color: hsl(275.6, 85%, 75.1%);
+    --icon-done-hover-color: var(--icon-hover-color);
+    --shadow: 0 0 0.5rem 0.1rem hsla(275.6, 85%, 26.1%, var(--alfa1));
+    --back-active-color:hsla(275.6, 85%, 26.1%, var(--alfa1));
+    --border-color: hsl(284, 76.8%, 74.5%);
+    --border: 2px solid var(--border-color);
+  }
 }
 
 * {
