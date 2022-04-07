@@ -190,10 +190,7 @@ document.querySelector(".dark-theme-label").addEventListener("click", () => {
 });
 
 // checking prefered user theme!
-// const preferedTheme = window.matchMedia("(prefers-color-scheme: dark)");
-// console.log(preferedTheme);
-// if (preferedTheme.matches) {
-//   console.log('dark');
-// }else{
-//   console.log('lite');
-// }
+const preferedTheme = window.matchMedia("(prefers-color-scheme: dark)");
+if (preferedTheme.matches) {
+  document.querySelector(".dark-theme-checkbox").checked = true;
+}
