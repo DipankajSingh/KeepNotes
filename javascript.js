@@ -194,3 +194,6 @@ const preferedTheme = window.matchMedia("(prefers-color-scheme: dark)");
 if (preferedTheme.matches) {
   document.querySelector(".dark-theme-checkbox").checked = true;
 }
+if (preferedTheme.matches==false) {
+  document.querySelector(".dark-theme-checkbox").checked = false;
+}
