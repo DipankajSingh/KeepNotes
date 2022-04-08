@@ -1,8 +1,12 @@
 const elementId = (element) => document.getElementById(element);
+
 const arrOfElm = (className) => document.getElementsByClassName(className);
+
 let root = document.querySelector(":root");
+
 const setValue = (target, value) =>
   root.style.setProperty("--" + target, value);
+
 const darkTheme = () => {
   setValue("background-color", "hsl(282, 50%, 3.9%)");
   setValue("ui-text-color", "hsl(284, 76.8%, 64.5%)");
@@ -20,6 +24,7 @@ const darkTheme = () => {
   setValue("back-active-color", "hsla(275.6, 85%, 26.1%, var(--alfa1))");
   setValue("border-color", "hsl(284, 76.8%, 74.5%)");
 };
+
 const lightTheme = () => {
   setValue("background-color", "hsl(111, 33%, 8%)");
   setValue("ui-text-color", "hsl(120, 100%, 50%)");
@@ -37,19 +42,21 @@ const lightTheme = () => {
   setValue("back-active-color", "hsla(120, 79%, 21%, var(--alfa1))");
   setValue("border-color", "rgb(21, 59, 4)");
 };
+
 const themePrefers = localStorage.getItem("theme");
 if (themePrefers != null) {
-  if (themePrefers == "dark") {
+  if (themePrefers === "dark") {
     darkTheme();
     document.querySelector(".dark-theme-checkbox").checked = true;
   }
-  if (themePrefers == "light") {
+  if (themePrefers === "light") {
     lightTheme();
     document.querySelector(".dark-theme-checkbox").checked = false;
   }
 }
-// Loading the old notes
+// jokes a part
 
+// Loading the exiting notes
 let oldNotes = localStorage.getItem("notes");
 let noteObj = JSON.parse(oldNotes);
 
@@ -58,7 +65,8 @@ if (noteObj != null) {
     addNewNote(null, element);
   });
 }
-// check if there is an empty note
+
+// check if there is an empty note then romove it
 Array.from(arrOfElm("noteTitle")).forEach((elm) => {
   if (elm.innerText == "") {
     elm.parentElement.remove();
@@ -97,6 +105,7 @@ function addNewNote(e, text = "") {
   // defining the delete button
   deleteBtn.addEventListener("click", (e) => {
     e.stopPropagation();
+
     let arr = localStorage.getItem("notes");
     arr = JSON.parse(arr);
     if (arr != null) {
@@ -106,8 +115,8 @@ function addNewNote(e, text = "") {
         }
       });
     }
-    localStorage.setItem("notes", JSON.stringify(arr));
 
+    localStorage.setItem("notes", JSON.stringify(arr));
     note.remove();
   });
 
@@ -147,6 +156,7 @@ function addNewNote(e, text = "") {
         });
         localStorage.setItem("notes", JSON.stringify(array));
       }
+
       editWindow.style.transform = "translate(-50%, 110%)";
       setTimeout(() => {
         editWindow.remove();
@@ -154,6 +164,7 @@ function addNewNote(e, text = "") {
     });
   });
 }
+
 // adding a new note on clicking plus button
 document.getElementById("newNoteButton").addEventListener("click", addNewNote);
 
@@ -171,19 +182,18 @@ document.querySelector(".cancel").addEventListener("click", () => {
 document.querySelector(".option-button").addEventListener("click", () => {
   document.querySelector(".option-dailog").style.transform = "translateY(0)";
 });
-// accessing the all variable values
-const getValue = (requredVariable) =>
-  getComputedStyle(root).getPropertyValue("--" + requredVariable);
 
+// accessing the all variable values
 document.querySelector(".dark-theme-label").addEventListener("click", () => {
-  let checkbox = document.querySelector(".dark-theme-checkbox");
+  const checkbox = document.querySelector(".dark-theme-checkbox");
+
   // there is false working like true
-  if (checkbox.checked == false) {
+  if (checkbox.checked === false) {
     darkTheme();
     localStorage.setItem("theme", "dark");
   }
 
-  if (checkbox.checked == true) {
+  if (checkbox.checked === true) {
     lightTheme();
     localStorage.setItem("theme", "light");
   }
@@ -192,8 +202,35 @@ document.querySelector(".dark-theme-label").addEventListener("click", () => {
 // checking prefered user theme!
 const preferedTheme = window.matchMedia("(prefers-color-scheme: dark)");
 if (preferedTheme.matches) {
-  document.querySelector(".dark-theme-checkbox").checked = true;
-}
-if (preferedTheme.matches==false) {
   document.querySelector(".dark-theme-checkbox").checked = false;
 }
+if (preferedTheme.matches) {
+  document.querySelector(".dark-theme-checkbox").checked = true;
+}
+
+// custom theme
+const colorInputs = document.querySelectorAll(".color-input");
+Array.from(colorInputs).forEach((element) => {
+  element.addEventListener("change", (e) => {
+    document.querySelector(".dark-theme-checkbox").checked = false;
+    lightTheme();
+  });
+});
+
+function setTheme(inputId, targetVariable) {
+  const element = document.querySelector("." + inputId);
+  element.addEventListener("change", (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+    setValue(targetVariable, element.value);
+  });
+}
+
+setTheme("app-background-color-input", "background-color");
+setTheme("application-text-color-input", "ui-text-color");
+setTheme("notes-text-color-input", "notes-color");
+setTheme("notes-background-color-input", "notes-background-color");
+setTheme("icon-color-input", "icon-color");
+
+const getValue = (requredVariable) =>
+  getComputedStyle(root).getPropertyValue("--" + requredVariable);
