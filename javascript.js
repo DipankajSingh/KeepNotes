@@ -210,10 +210,9 @@ if (preferedTheme.matches) {
 
 // custom theme
 const colorInputs = document.querySelectorAll(".color-input");
-Array.from(colorInputs).forEach((element) => {
+colorInputs.forEach((element) => {
   element.addEventListener("change", (e) => {
     document.querySelector(".dark-theme-checkbox").checked = false;
-    lightTheme();
   });
 });
 
@@ -224,7 +223,7 @@ function setTheme(inputId, targetVariable) {
     e.preventDefault();
     setValue(targetVariable, element.value);
   });
-}
+};
 
 setTheme("app-background-color-input", "background-color");
 setTheme("application-text-color-input", "ui-text-color");

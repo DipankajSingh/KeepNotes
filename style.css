@@ -16,6 +16,7 @@
     --back-active-color:hsla(120, 79%, 21%, var(--alfa1));
     --border-color: rgb(21, 59, 4);
     --border: 2px solid var(--border-color);
+    --notes-font-size:larger;
   }
 }
 
@@ -83,6 +84,7 @@ nav {
 .setting-title {
   position: relative;
   color: var(--ui-text-color);
+  filter: hue-rotate(20deg);
   font-family: monospace;
   font-size: 2em;
   font-weight: 800;
@@ -209,7 +211,7 @@ nav {
   background-color: var(--notes-background-color);
   color: var(--notes-color);
   margin: 1rem auto;
-  font-size: larger;
+  font-size: var(--notes-font-size);
   cursor: pointer;
   transition: all 0.2s;
   overflow: hidden;
@@ -508,7 +510,28 @@ nav {
   top: 6.5rem;
   height: 1px;
   width: 99%;
-  background-color: var(--border-color);
+  opacity: .2;
+  background-color: var(--ui-text-color);
+}
+
+.custom-theme-lable{
+  color: var(--ui-text-color);
+  filter: hue-rotate(20deg);
+  position: relative;
+  font-size: 1.5rem;
+  left: 1.5rem;
+  text-transform: capitalize;
+  width: max-content;
+  height: max-content;
+}
+.custom-theme-lable::before{
+  content: '';
+  position: absolute;
+  background-color: var(--ui-text-color);
+  opacity: .2;
+  width: 130%;
+  height: 1px;
+  bottom: -5px;
 }
 .custom-theme {
   display: flex;
@@ -548,4 +571,8 @@ nav {
   border-radius: 1rem;
   outline: none;
   right: 2rem;
+}
+.fonts-section{
+  position: relative;
+  display: none;
 }
