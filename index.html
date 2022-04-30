@@ -1,146 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="icon/all.min.css" />
-    <link rel="stylesheet" href="icon/fontawesome.min.css" />
-    <title>TakeNotes</title>
-    <link rel="stylesheet" href="style.css" />
-    <script defer src="javascript.js"></script>
-  </head>
-  <body>
-    <div class="navbar" id="navbar">
-      <a href="#home-page"><i class="fa-solid fa-house"></i></a>
-      <a href="#theme-page"><i class="fa-solid fa-cloud-moon"></i></a>
-      <a href="#fonts-page"><i class="fa-solid fa-text-height"></i></a>
-      <a href="#jokes-page"><i class="fa-solid fa-face-laugh-beam"></i></a>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="icon/all.min.css" />
+  <link rel="stylesheet" href="icon/fontawesome.min.css" />
+  <title>TakeNotes</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="javascript.js"></script>
+</head>
+
+<body>
+  <div class="navbar" id="navbar">
+    <div data-selected="true" data-name="home" data-tooltip="home" class="navButton">
+      <a><i class="fa-solid fa-house"></i></a>
     </div>
-    <div class="page-holder">
-      <div class="home-page page" id="home-page">
-        <div class="home-page-navbar">
-          <div class="app-title">TakeNotes</div>
-          <div class="add-button"><i class="fa-solid fa-plus"></i>add</div>
+    <div data-selected="false" data-name="theme-page" data-tooltip="theme" class="navButton">
+      <a><i class="fa-solid fa-cloud-moon"></i></a>
+    </div>
+    <div data-selected="false" data-name="fonts-page" data-tooltip="fonts and style" class="navButton">
+      <a><i class="fa-solid fa-text-height"></i></a>
+    </div>
+    <div data-selected="false" data-name="jokes-page" data-tooltip="laughters area" class="navButton">
+      <a><i class="fa-solid fa-face-laugh-beam"></i></a>
+    </div>
+  </div>
+  <div class="page-holder">
+    <div class="home-page page" data-name="home" data-selected="true" id="home-page">
+      <div class="home-page-navbar">
+        <div class="app-title page-title">
+          Take<span class="n">N</span>otes
         </div>
-        <div class="view-window">
-          <textarea></textarea>
-          <div class="buttons-container">
-            <i class="fa-solid fa-circle-plus"></i>
-            <i class="fa-solid fa-circle-xmark"></i>
-            <div class="read-only">
-              <input type="checkbox" name="read-only" id="read-only" />
-              <label for="read-only">read only</label>
-            </div>
+        <div class="add-button">
+          <div><i class="fa-solid fa-circle-plus"></i></div>
+        </div>
+      </div>
+
+      <div class="notes-container"></div>
+    </div>
+    <div class="theme-page page" data-name="theme-page" data-selected="false" id="theme-page">
+      <div class="theme-title page-title">
+        <div>apearence</div>
+      </div>
+      <div class="theme-mode">
+        <div class="light-theme theme" data-isselected="false">
+          <div class="light-theme-preview pre-Theme" data-themePreview="light theme">
+            <div class="nav-preview"></div>
+            <div class="card-preview"></div>
           </div>
         </div>
-        <div class="notes-container">
-          <div class="note-card">
-            <div class="text">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis
-              quo aliquid nisi doloribus quam fuga pariatur eaque aspernatur
-              necessitatibus fugiat, unde itaque, qui possimus laborum, dolorum
-              nihil corporis molestiae laboriosam.
-            </div>
-            <div class="delete-button">delete</div>
-            <div class="edit-button">edit</div>
+        <div class="dark-theme theme"  data-isselected="false">
+          <div class="dark-theme-preview pre-Theme" data-themePreview="dark theme">
+            <div class="nav-preview"></div>
+            <div class="card-preview"></div>
+          </div>
+        </div>
+        <div class="auto-theme theme" data-isselected="false">
+          <div class="auto-theme-preview pre-Theme" data-themePreview=" system default" >
+            <div class="nav-preview"></div>
+            <div class="card-preview"></div>
           </div>
         </div>
       </div>
-      <div class="theme-page page" id="theme-page">
-        <div class="theme-title"><div>apearence</div></div>
-        <div class="theme-mode">
-          <div class="light-theme">
-            <div class="light-theme-preview"></div>
+      <div class="set-theme">
+        <div class="set-theme-text">or choose your color</div>
+        <div class="colors-container">
+          <div class="back-color">
+            <label for="i1" class="back-color-text">background colour</label>
+            <input id="i1" type="color" class="back color-input" />
           </div>
-          <div class="dark-theme">
-            <div class="dark-theme-preview"></div>
-          </div>
-          <div class="auto-theme">
-            <div class="auto-theme-preview"></div>
-          </div>
-        </div>
-        <div class="set-theme">
-          <div class="set-theme-text">or choose your color <i class="fa-solid fa-palette"></i></div>
-          <div class="colors-container">
-            <div class="back-color">
-              <div class="back-color-text">background colour</div>
-              <input type="color" class="back-color-input" />
-            </div>
-            <div class="ui-font-color">
-              <div class="ui-font-color-text">app text colour</div>
-              <input type="color" class="ui-font-color-input" />
-            </div>
-            <div class="icon-color">
-              <div class="icon-color-text">icon colour</div>
-              <input type="color" class="icon-color-input" />
-            </div>
-            <div class="notes-card-background-color">
-              <div class="notes-card-background-color-text">
-                notes card background colour
-              </div>
-              <input type="color" class="notes-card-background-color-input" />
-            </div>
+          <div class="ui-font-color">
+            <label for="i2" class="nav-color-text">app accent colour</label>
+            <input id="i2" type="color" class="nav color-input" />
           </div>
         </div>
       </div>
-      <div class="fonts-page page" id="fonts-page">
-        <div class="font-page-title">fonts apearence</div>
-        <div class="fonts-test-card">
+    </div>
+    <div class="fonts-page page" data-name="fonts-page" data-selected="false" id="fonts-page">
+      <div class="font-page-title page-title">
+        <div>fonts apearence</div>
+      </div>
+      <div class="pre-note-card">
+        <div class="pre-trash-pen">
+          <div class="pre-trash btn">
+            <div><i class="fa-solid fa-trash"></i></div>
+          </div>
+          <div class="pre-pen btn" data-clicked="false">
+            <div><i class="fa-solid fa-pen"></i></div>
+          </div>
+        </div>
+        <div class="pre-text-parent">
           <div class="text">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis quo
-            aliquid nisi doloribus quam fuga pariatur eaque aspernatur
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+          </div>
+        </div>
+      </div>
+      <div class="set-font-style">
+        <label>fonts</label>
+        <div class="notes-font-color">
+          <input type="color" id="notes-font-color-input" />
+        </div>
+        <div class="notes-font-weight">
+          <select name="font-weight" id="font-weight">
+            <option value="bold">bold</option>
+            <option value="itelic">itelic</option>
+            <option value="bolder">bolder</option>
+            <option value="lighter">lighter</option>
+          </select>
+        </div>
+        <div class="notes-font-style">
+          <select name="font-style" id="font-style">
+          </select>
+        </div>
+      </div>
+      <div class="words">
+        <label class="word" for="word-block">star '*' offencesive words</label>
+        <input type="checkbox" id="word-block" />
+      </div>
+    </div>
+    <div class="jokes-page page" data-name="jokes-page" data-selected="false" id="jokes-page">
+      <div class="jokes-page-title page-title">
+        <div>dad jokes</div>
+      </div>
+      <div class="jokes-container">
+        <div class="joke-card">
+          <div class="text">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis
+            quo aliquid nisi doloribus quam fuga pariatur eaque aspernatur
             necessitatibus fugiat, unde itaque, qui possimus laborum, dolorum
             nihil corporis molestiae laboriosam.
           </div>
-          <div class="delete-button">delete</div>
-          <div class="edit-button">edit</div>
-        </div>
-        <div class="set-font-style">
-          <div class="notes-font-color">
-            <div class="notes-font-color-text">note font color</div>
-            <input type="color" id="notes-font-color-input" />
+          <div class="like-button joke-btn">
+            <i class="fa-solid fa-heart"></i>
           </div>
-          <div class="notes-font-size">
-            <div class="notes-font-size-text">note font size</div>
-            <input type="range" max="100" id="notes-font-size-input" />
-          </div>
-          <div class="notes-font-weight">
-            <div class="notes-font-weight-text">note font weight</div>
-            <select name="font-weight" id="font-weight">
-              <option value="bold">bold</option>
-              <option value="itelic">itelic</option>
-              <option value="bolder">bolder</option>
-              <option value="lighter">lighter</option>
-            </select>
-          </div>
-          <div class="notes-font-style">
-            <div class="notes-font-style-text">font style</div>
-            <select name="font-style" id="font-style"></select>
-          </div>
-          <div class="words">
-            <div class="word-block-section">star offencesive words</div>
-            <div class="block-words">
-              <div class="toggler"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="jokes-page page" id="jokes-page">
-        <div class="jokes-page-title">not so funny</div>
-        <div class="jokes-container">
-          <div class="joke-card">
-            <div class="text">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis
-              quo aliquid nisi doloribus quam fuga pariatur eaque aspernatur
-              necessitatibus fugiat, unde itaque, qui possimus laborum, dolorum
-              nihil corporis molestiae laboriosam.
-            </div>
-            <div class="like-button"><i class="fa-solid fa-heart"></i></div>
-            <div class="next-button">one more! <i class="fa-solid fa-angle-right"></i></div>
+          <div class="next-button joke-btn">
+            <label>next!</label> <i class="fa-solid fa-angle-right"></i>
           </div>
         </div>
       </div>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>
