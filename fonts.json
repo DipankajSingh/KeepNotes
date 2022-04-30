@@ -1,0 +1,30 @@
+{
+    "sansSerif": [
+        "Arial",
+        "Arial Black",
+        "Verdana",
+        "Tahoma",
+        "Trebuchet MS",
+        "Impact"
+    ],
+    "serif": [
+        "Times New Roman",
+        "Didot",
+        "Georgia",
+        "American Typewriter"
+    ],
+    "monospace": [
+        "Andalé Mono",
+        "Courier",
+        "Lucida Console",
+        "Monaco"
+    ],
+    "cursive": [
+        "Bradley Hand",
+        "Brush Script MT",
+        "Luminari",
+        "Comic Sans MS",
+        "cursive"
+        
+    ]
+}
