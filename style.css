@@ -714,13 +714,14 @@ body {
   position: absolute;
   height: max-content;
   padding: 10px;
-  width: 100%;
+  width: max-content;
   word-wrap: break-word;
   font-size: calc(0.5vw + 0.8rem);
   font-family: monospace;
   font-weight: 900;
-  top: 30%;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%,-50%);
   background-color: transparent;
-  transform: translateY(-50%);
   overflow: auto;
 }

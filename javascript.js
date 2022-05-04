@@ -1,4 +1,11 @@
 const navButtons = document.querySelectorAll(".navButton");
+const jokeElement = document.querySelector(".jokeElement");
+const fontColor = document.getElementById("notes-font-color-input");
+const fontWeight = document.getElementById("font-weight");
+const fontFamily = document.getElementById("font-style");
+const blockwords = document.getElementById("word-block");
+const nextBtn = document.querySelector(".next-button");
+const likeBtn = document.querySelector(".like-button");
 const navbar = document.querySelector(".navbar");
 const page = document.querySelectorAll(".page");
 const theme = document.querySelectorAll(".theme");
@@ -78,17 +85,17 @@ theme.forEach((elm) => {
         darkFunc(true);
       }
       localStorage.setItem("theme", "auto");
-      localStorage.removeItem('colors');
+      localStorage.removeItem("colors");
     }
     if (elm.classList[0] == "dark-theme") {
       darkFunc(true);
       localStorage.setItem("theme", "dark");
-      localStorage.removeItem('colors');
+      localStorage.removeItem("colors");
     }
     if (elm.classList[0] == "light-theme") {
       darkFunc();
       localStorage.setItem("theme", "light");
-      localStorage.removeItem('colors');
+      localStorage.removeItem("colors");
     }
   });
 });
@@ -181,8 +188,22 @@ function addNoteCard(oldText = "") {
     }
     noteCard.remove();
   });
+  //blocking offensive word
+  ////////////////////////////////////////////////////////////
+  //                      work in Progress                  //
+  ////////////////////////////////////////////////////////////
+  async function getWords(text) {
+    const res = await fetch("words.json");
+    const words = await res.json();
+    words.forEach((badWord) => {
+      if (text.includes(badWord)) {
+        text = text.replace(badWord, "*".repeat(badWord.length));
+      }
+    });
+    return text;
+  }
   //toggling pen
-  pen.addEventListener("click", () => {
+  pen.addEventListener("click",async function () {
     let textData = JSON.parse(localStorage.getItem("textData"));
     if (textData != null) {
       if (textData.indexOf(text.innerText) != -1) {
@@ -205,7 +226,7 @@ function addNoteCard(oldText = "") {
     if (pen.dataset.clicked == "true") {
       textarea.style.transform = `translateX(200%)`;
       pen.dataset.clicked = false;
-      text.innerText = textarea.value;
+      text.innerText =await getWords(textarea.value);
       if (textarea.value == "") {
         text.innerText = defultText;
       }
@@ -217,7 +238,6 @@ function addNoteCard(oldText = "") {
     }
   });
 }
-
 //loading exiting notes data
 let noteData = JSON.parse(localStorage.getItem("textData"));
 if (noteData != null) {
@@ -246,31 +266,58 @@ colorInputs.forEach((elm) => {
   });
 });
 
-const fontColor=document.getElementById('notes-font-color-input');
-const fontWeight=document.getElementById('font-weight');
-const fontFamily=document.getElementById('font-style');
-
 async function fontStyle() {
-const res=await fetch('fonts.json');
-const fonts= await res.json();
-let allFonts=[...fonts.monospace,...fonts.sansSerif,...fonts.cursive,...fonts.serif];
-console.log(allFonts);
-allFonts.forEach((val)=>{
-  let elm=` <option value="${val}">${val}</option>`;
-  fontFamily.insertAdjacentHTML('afterbegin',elm);
-})
-
+  const res = await fetch("fonts.json");
+  const fonts = await res.json();
+  let allFonts = [
+    ...fonts.monospace,
+    ...fonts.sansSerif,
+    ...fonts.cursive,
+    ...fonts.serif,
+  ];
+  allFonts.forEach((val) => {
+    let elm = ` <option value="${val}">${val}</option>`;
+    fontFamily.insertAdjacentHTML("afterbegin", elm);
+  });
 }
 fontStyle();
-fontColor.addEventListener('change',()=>{
-  setTheme('--note-color',fontColor.value);
-
+fontColor.addEventListener("change", () => {
+  setTheme("--note-color", fontColor.value);
 });
 
-fontWeight.addEventListener('change',()=>{
-  setTheme('--font-weight',fontWeight.value);
+fontWeight.addEventListener("change", () => {
+  setTheme("--font-weight", fontWeight.value);
 });
 
-fontFamily.addEventListener('change',()=>{
-  setTheme('--font-family',fontFamily.value);
-})
+fontFamily.addEventListener("change", () => {
+  setTheme("--font-family", fontFamily.value);
+});
+
+//jokes a part
+
+async function joke() {
+  try {
+    const res = await fetch("https://icanhazdadjoke.com/", {
+      headers: {
+        accept: "application/json",
+      },
+    });
+    const joke = await res.json();
+    jokeElement.innerText = joke.joke;
+  } catch (error) {
+    jokeElement.innerText = error;
+  }
+}
+joke();
+nextBtn.addEventListener("click", () => {
+  joke();
+});
+
+likeBtn.addEventListener("click", () => {
+  let oldJokes = [JSON.parse(localStorage.getItem("oldJokes"))];
+  if (oldJokes[0] == null) {
+    oldJokes = [];
+  }
+  oldJokes.push(jokeElement.innerText);
+  localStorage.setItem("oldJokes", JSON.stringify(oldJokes));
+});
